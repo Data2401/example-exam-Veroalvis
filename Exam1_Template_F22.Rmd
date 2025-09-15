@@ -1,6 +1,6 @@
 ---
 title: "Exam 1 Template"
-author: "YOUR NAME HERE"
+author: "Veronica Alviso"
 date: "DATA 2401 - Fall 2022"
 output:
   html_document: default
@@ -36,7 +36,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Part 2 (10 points)
 
-In your own words, *briefly* describe the difference between saving, committing, and pushing. 
+In your own words, *briefly* describe the difference between saving, committing, and pushing.
+
+Saving the file will save the file to your local drive (if not saved: red text in the editor tab)
+
+Commiting the file will save your commit locally; in this part you add a commit message that explains what changes you made. 
+
+Pushing your file will send it to the cloud. It will then be available in the website(github)
 
 ## Part 3 (10 points)
 
@@ -49,7 +55,11 @@ In your own words, *briefly* describe the difference between saving, committing,
 * [3 points] Try to divide the new vector by two. Does it work? Why or why not? 
 
 ```{r}
-
+numbers <- 3:15
+half_numbers <- numbers/2
+c(numbers,"puppies")
+#c(numbers,"puppies")/2
+print("It doesn't work, because non-numeric argument to binary operator")
 ```
 
 ## Part 4 (15 points)
@@ -60,15 +70,28 @@ You run a small dog daycare. This is the data you have on the dogs that come to 
 names <- c("Fido", "Doug", "Bella", "Max", "Cooper", "Lucy", "Duke", "Barkley")
 age <- c(2, 5, 4, 6, 1, 13, 9, 3)
 weight <- c(14, 89, 32, 46, 55, 7, 25, 36)
+
+#[2 points] Find the average weight and age of the dogs.
+x <- mean(age)
+x
+#[2 points] How light is the dog with the lowest weight?
+y<-min(age)
+y
+#[3 points] What is the name of the oldest dog?
+names[which.max(age)]
+#[3 points] What is the age of the heaviest dog?
+age[which.max(weight)]
+#[2 points] It's been 2 years since you entered this information! Change `age` to reflect that. 
+age <- age + 2
+age
+#[3 points] A new dog is here! Her name is Daisy, she is 3 years old, and weighs 39 pounds. Add her to your data. 
+names <- c(names, "Daisy")
+age <- c(age, 3)
+weight <- c(weight,39)
+names
+age
+weight
 ```
-
-* [2 points] Find the average weight and age of the dogs.
-* [2 points] How light is the dog with the lowest weight?
-* [3 points] What is the name of the oldest dog?
-* [3 points] What is the age of the heaviest dog?
-* [2 points] It's been 2 years since you entered this information! Change `age` to reflect that. 
-* [3 points] A new dog is here! Her name is Daisy, she is 3 years old, and weighs 39 pounds. Add her to your data. 
-
 
 ## Part 5 (10 points)
 
@@ -77,12 +100,23 @@ In baseball, the slugging percentage is computed with 5 variables, the number of
 1. [7 points] Write a function that takes these 5 values as arguments and returns the slugging percentage for that player. 
 
 $$  \frac{(1B + 2B\times2 + 3B \times 3 + HR\times 4)}{AB} $$
+```{r}
+slugging_perc <- function(B1,B2,B3,HR,AB)
+{
+  fun_value <- (B1+(B2 * 2) + (B3*3) + (HR * 4))/AB
+  return(fun_value)
+}
 
+```
 2. [3 points] The Astros player Jose Altuve currently has the following stats: 
 
 `1B = 89, 2B = 34, 3B = 0, HR = 25, AB = 499 `
 
 Use your function to find his slugging percentage. 
+
+```{r}
+slugging_perc(89,34,0,25,499)
+```
 
 
 ## Part 6 (15 points)
@@ -90,6 +124,17 @@ Use your function to find his slugging percentage.
 1. [6 points] Write a function that takes a vector `x` and returns a vector with the square root of each element of the vector. 
 
 > For example, if you pass the function a vector containing 4 and 16, it should return a vector containing 2 and 4. 
+
+```{r}
+
+sqrt_Func <- function(x)
+{
+  y <- sqrt(x)
+  return(x)
+}
+
+```
+
 
 2. [6 points] Write a second function that does the above, but also removes any negative values or changes them to 0.
 
