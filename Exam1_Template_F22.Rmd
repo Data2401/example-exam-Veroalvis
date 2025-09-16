@@ -126,13 +126,13 @@ slugging_perc(89,34,0,25,499)
 > For example, if you pass the function a vector containing 4 and 16, it should return a vector containing 2 and 4. 
 
 ```{r}
-
 sqrt_Func <- function(x)
 {
   y <- sqrt(x)
-  return(x)
+  return(y)
 }
-
+x <- c(4,16)
+sqrt_Func(x)
 ```
 
 
@@ -140,11 +140,24 @@ sqrt_Func <- function(x)
 
 > For example, if you pass *this* function -4 and 16, it should return either 0 and 4 or just 4.
 
+```{r}
+no_negatives_sqrt <- function(x)
+{
+  x[x<0]<- 0
+ return(sqrt_Func(x))
+}
+p <- c(-4,16)
+no_negatives_sqrt(p)
+
+```
+
 3. [3 points] Test your second function on the following vectors:
 
 ```{r}
 test1 <- c(1:10)
 test2 <- c(-4:4)
+no_negatives_sqrt(test1)
+no_negatives_sqrt(test2)
 ```
 
 
@@ -159,7 +172,37 @@ Rating | Bonus Percent
 1|5%
 
 1. [8 points] Write a function that takes the employees score and their salary as arguments and returns their bonus amount for the year. 
-
+```{r}
+bonus_amount <- function(x)
+{
+  
+  if(x[1]==3)
+  {
+    return(x[2] * 0.15)
+  }
+  else if(x[1]==2)
+  {
+    return(x[2]* 0.10)
+  }
+  else
+  {
+    return(x[2]*0.05)
+  }
+}
+```
 2. [2 points] Fitz makes $100,000 a year, but only got a score of 1. Use your function to calculate his bonus.
+```{r}
+score <- c(1,100000)
+bonus_amount(score)
+```
 
 3. [3 extra credit points] Modify your function so that it returns the full pay for the year, salary and bonus combined. How much will Fitz make in total?
+```{r}
+modified_bonus <- function(x)
+{
+  y <- bonus_amount(x)
+  return( y + x[2])
+}
+score <- c(1,100000)
+modified_bonus(score)
+```
